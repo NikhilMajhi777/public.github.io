@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <title>Cities</title>
+    <script>
+        var cities = ["Hyderbad","Banglore","Panjab","Haryana","Gujrat","Delhi","Bhopal","Jaipur","Agra"];
+        function bodyload() {
+            document.querySelector("ol").innerHTML = "";
+            for (city of cities){
+                var list = document.createElement("li");
+                list.innerHTML = city;
+                document.getElementById("citylist").appendChild(list)
+            }
+        }
+        function sortClick() {
+            var icon = document.getElementById("icon");
+            icon.className = (icon.className=="bi bi-sort-alpha-down")?"bi bi-sort-alpha-up":"bi bi-sort-alpha-down";
+            if(icon.className=="bi bi-sort-alpha-down") 
+            {
+                document.querySelector("h3").innerHTML = "Ascending Order";
+                cities.sort();
+            
+            } else if(icon.className=="bi bi-sort-alpha-up") {
+               
+                document.querySelector("h3").innerHTML = "Descending";
+                cities.sort();
+                cities.reverse();
+            }
+            bodyload();
+            
+            
+
+        }
+       
+    </script>
+    <style>
+        h3 {
+            text-shadow: 2px 2px 2px red;
+        }
+        .city{
+            margin-top: 20px;
+            margin-left: 100px;
+        
+        }
+        button {
+            margin-bottom: 10px;
+            justify-content: space-between;
+            margin-left: 10px;
+            
+        }
+        .card {
+            margin-top: 50px;
+            background-color: goldenrod;
+        }
+    </style>
+
+</head>
+<body onload="bodyload()" class="container-fluid d-flex">
+    <div class="card w-50">
+        <marquee behavior="alternate" scrollamount="10"><h3>Cities Arrengement</h3></marquee>
+
+        <ol id="citylist" style="list-style: none;"></ol>
+
+        <button onclick="sortClick()" class="btn btn-primary">
+            <span class="bi bi-sort-alpha-down" id="icon"></span>
+            </button>
+    </div>   
+</body>
+</html>
